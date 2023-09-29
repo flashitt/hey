@@ -1,379 +1,98 @@
-
 <!DOCTYPE html>
-<html lang="en"
-    data-color-scheme="none"
-    data-bridge-platform=""
-    data-bridge-components=""
-    data-controller="bridge--scroll-to-cursor color-scheme"
-    data-action="selectionchange@document->bridge--scroll-to-cursor#scrollToCursorIfNeeded">
-  <head>
-    <meta charset="utf-8">
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <style>
+        .myDiv {
+          border: 5px outset red;
+          background-color: lightblue;
+          text-align: center;
+        }
+        h1 {
+            font-size : 280%;
+            font-weight : bold;
+            margin-bottom:0px;
+            padding-bottom:0px;
+            text-align: center;
+        }
+        .font {
+            font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+        .form__field {
+  font-family: inherit;
+  width: 70%;
+  border: 0;
+  border-bottom: 1px solid;
+  outline: 0;
+  font-size: 1.3rem;
+  color: $white;
+  padding: 7px 0;
+  border-bottom-style: dashed;
+  background: transparent;
+  transition: border-color 0.2s;
+  text-align : center;
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+     font-weight : bold;
 
-    <title>Sign in to HEY</title>
+}
+.form__field:focus {
+     border-color : rgb(85 34 250);
+     caret-color : rgb(85 34 250);
+     font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+     font-weight : bold;
+     text-align : center;
 
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="apple-mobile-web-app-title" content="HEY">
-    <meta name="application-name" content="HEY">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-
-
-    <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="krS7KLVl31RQS2kDep8DDCeqN+nyG2IoJ3veZBYt2eD2O2tipXLwH+mc5bZxVHgQlrFXTsspwh0Xw6sB0bz2Og==" />
-
-    <link rel="stylesheet" href="/assets/desktop-74b48b77f7aa04e895b48048591f8ea6bf71875f.css" media="all" data-turbo-track="reload" />
-    <link rel="stylesheet" href="/assets/message_content-c76b45f4ef3934a6c7236fe438d95fdf174a44e3.css" media="none" id="message_content_stylesheet" data-turbo-track="reload" />
-
-    <script type="importmap" data-turbo-track="reload" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">{
-  "imports": {
-    "application": "/assets/application-5413d1d267ad298ca80e5997c339f5f81ba28c80.js",
-    "public": "/assets/public-332feb73837544e30d400768e71655b6bac16f12.js",
-    "bridge/base_component_controller": "/assets/bridge/base_component_controller-47dcc6dcc3e87489c18b8c264f6999a672082b72.js",
-    "@hotwired/turbo-rails": "/assets/turbo.min-9d8b33549bca372f1afd01f1d2fb46d0e50db098.js",
-    "@hotwired/stimulus": "/assets/stimulus.min-7ea3d58b7f4507e3603ec999251ff60d16431a30.js",
-    "@hotwired/stimulus-loading": "/assets/stimulus-loading-25917588565633495ac04a032df7c72f2a9368de.js",
-    "turbo-morph": "/assets/turbo-morph-86a024c99d1e383507ddb2afa36f399f62885ae1.js",
-    "@rails/actiontext": "/assets/actiontext@7.0.2-aa7a2386a4e14960298c4a18546e7c888ed97bd5.js",
-    "trix": "/assets/trix-578f47eb1b2c28a16a8d9b5932ba19d7008bc67a.js",
-    "hey-message-content": "/assets/hey-message-content.min-8354eb43c3a386867c33cd25e6d82e81ec7f07d7.js",
-    "@github/hotkey": "/assets/@github--hotkey-dbcecc93d2d4ec463eedf12b02e315c0f985fb63.js",
-    "date_time_picker": "/assets/date_time_picker-25c75745f8ba8dac30e78d198b8ec82fb76dd6a7.js",
-    "@github/webauthn-json": "/assets/@github--webauthn-json-07d6910dabeac6814fb967c68c2b3d814771eccc.js",
-    "tabbable": "/assets/tabbable-6929def59b4f43bb9ed44e639956ff21bf05ffc1.js",
-    "form-request-submit-polyfill": "/assets/form-request-submit-polyfill-3d68e5f0d754578029eafa28c20d59f9ff047aeb.js",
-    "local-time": "/assets/local-time@2.1.0-40803cb088ef4ebf513db2aa766ff3f57eb1ae7f.js",
-    "smoothscroll-polyfill": "/assets/smoothscroll-polyfill-c0b62039a7385165a6b89386e87389d85f0f2b5f.js",
-    "braintree-web": "/assets/braintree-web-252c5dea98901ea621ae899099d3563e71cb65c0.js",
-    "process": "/assets/process-ea263c9bfdca781bf01b25b6a70324a566d88c31.js",
-    "@grafana/faro-web-sdk": "/assets/@grafana--faro-web-sdk-a904ab3c9f81b6d5a69512df9bbe847635fae47b.js",
-    "@grafana/faro-core": "/assets/@grafana--faro-core-0753afac60d1a6e53c7d1e81d46a2745546556cb.js",
-    "murmurhash-js": "/assets/murmurhash-js-dcbaac87686e6b27dc1591f349400e4f0fedef56.js",
-    "ua-parser-js": "/assets/ua-parser-js-5444278a464bf3a858b25a3a5f725706ebdf61e9.js",
-    "web-vitals": "/assets/web-vitals-8267d74b3ea73efcaaa9e951fe0ec19a69b30ce2.js",
-    "initializers/hcaptcha": "/assets/initializers/hcaptcha-bd3f67144606e9affeda966357e260158fa245dd.js",
-    "initializers": "/assets/initializers/index-6a9cd125661f0abfcb36c63584c82b4dd1e9608c.js",
-    "initializers/mailto_protocol_handler": "/assets/initializers/mailto_protocol_handler-5817f867bd72e79524ee8d4f2c4e8df4f36c2f9f.js",
-    "initializers/rich_text": "/assets/initializers/rich_text-61ba21bdd43c434b34620c74dc222edd0a26ab07.js",
-    "initializers/stimulus_outlet_properties": "/assets/initializers/stimulus_outlet_properties-7d2269fe80eae71f2df8b1e97eafe48c355f6a1e.js",
-    "initializers/time_zone_cookie": "/assets/initializers/time_zone_cookie-92bbaf45a10caf6e5e690fd8fce9b0c22527d50e.js",
-    "initializers/turbolinks_compatibility": "/assets/initializers/turbolinks_compatibility-0bedf232b5a9fb533d423e5c1b594a6bd4dfe2f8.js",
-    "helpers/array_helpers": "/assets/helpers/array_helpers-df9ac0c6273e59e7b68dd4443e0c852676cb5538.js",
-    "helpers/cable_helpers": "/assets/helpers/cable_helpers-107ad6a004d3d94b054f15ca7559ffb693cde1ac.js",
-    "helpers/clipboard_helpers": "/assets/helpers/clipboard_helpers-d8b1205379a01877abe85bb2255a7db561decab0.js",
-    "helpers/color_helpers": "/assets/helpers/color_helpers-bb6f29f31896db4ff22f6ed0bf6c94b5e00bc263.js",
-    "helpers/current_helpers": "/assets/helpers/current_helpers-69434f7688aaf68b68226df19cd29426713fdcad.js",
-    "helpers/date_helpers": "/assets/helpers/date_helpers-c0b29dbbb7f3cc23af165c38fa75febb5ea00453.js",
-    "helpers/debounce_helpers": "/assets/helpers/debounce_helpers-25c4a3c39fdf620fda9723b505b32c95ea89d078.js",
-    "helpers/element_helpers": "/assets/helpers/element_helpers-c436a15f50436a6e858e4f157c6b008fc585b122.js",
-    "helpers/focus_helpers": "/assets/helpers/focus_helpers-81b5c506907593b9dd5d5212d77603af02831552.js",
-    "helpers/html_helpers": "/assets/helpers/html_helpers-ddf9f7a4a677d8f67ed11e65487550bfba50c61d.js",
-    "helpers": "/assets/helpers/index-09882dc2e09f4abd660df54cdfa4f9222237952d.js",
-    "helpers/mutation_observer_helpers": "/assets/helpers/mutation_observer_helpers-ccc6ffd09870c7080e84af99f516d8bcaa2d564b.js",
-    "helpers/parking_helpers": "/assets/helpers/parking_helpers-8fd815ae361f646f7dd8c6aec7a85481b13d1744.js",
-    "helpers/platform_helpers": "/assets/helpers/platform_helpers-6156f52a01dd2101430eb1529ed990defedb52f0.js",
-    "helpers/request_helpers": "/assets/helpers/request_helpers-9f92da063166a709812cca4078090705916b41ec.js",
-    "helpers/scroll_helpers": "/assets/helpers/scroll_helpers-935dba9163434f286a204e3d8474c40b4aae805d.js",
-    "helpers/string_helpers": "/assets/helpers/string_helpers-f58edf868cbd49f7cb89315b952b3769fd7a01c7.js",
-    "helpers/time_grid_placeholder_helpers": "/assets/helpers/time_grid_placeholder_helpers-fa8f9a7c7a1f3207a3b5f3a31fdb8f1b944be5b3.js",
-    "helpers/timing_helpers": "/assets/helpers/timing_helpers-05f7ced40318ec984336e45dfe379ab658ba9466.js",
-    "helpers/turbo_helpers": "/assets/helpers/turbo_helpers-5496333b991567941c18f8dd0485c0d0703e9c67.js",
-    "lib/autocomplete/collection": "/assets/lib/autocomplete/collection-eca8f4fa437d8ef8d40d45faf265a0a80276add8.js",
-    "lib/autocomplete/combobox": "/assets/lib/autocomplete/combobox-4e9048898d311426fc75c4c337a7e023f608fc66.js",
-    "lib/autocomplete": "/assets/lib/autocomplete/index-20df5baf5a0510273b470aef8e7d9110be48e8e9.js",
-    "lib/autocomplete/input": "/assets/lib/autocomplete/input-81fe35106d3c33bdf4827b5e085952e54584b8f6.js",
-    "lib/autocomplete/list": "/assets/lib/autocomplete/list-3195ed5976af49e8d9a5aa14b584b2fdef8f464e.js",
-    "lib/autocomplete/record": "/assets/lib/autocomplete/record-731f31cff20a302dc5a32103bb8f6bcfeb98a47c.js",
-    "lib/autocomplete/selection": "/assets/lib/autocomplete/selection-a79ebf7dd735fae8eec9fa8bd1ff4f7d663b0959.js",
-    "lib/autocomplete/util": "/assets/lib/autocomplete/util-e75b3e6b0c0ba1f3a6f4d50518af19e3c6472b14.js",
-    "lib/cookie": "/assets/lib/cookie-dbca1fd4375a839a0c0787ab96c35b50ca2a5ee2.js",
-    "lib/http": "/assets/lib/http/index-95a6bfe1868a36f328821fa5f4d255e82702e603.js",
-    "lib/http/request": "/assets/lib/http/request-0ef958221b587211f526f819175534da0dfd5d89.js",
-    "lib/http/response": "/assets/lib/http/response-1f25493ede93e284abef94f897442b20fadfabfe.js",
-    "lib/local_form": "/assets/lib/local_form-3a9a7aaf4206a55a97653ffab6483eab93361444.js",
-    "controllers/action_bar_controller": "/assets/controllers/action_bar_controller-fd4306da6e7a15d8ff6eab3e9aa05f71b8141431.js",
-    "controllers/action_group_expander_controller": "/assets/controllers/action_group_expander_controller-1324bcb6ef771c19deca4a7d80a9c84ed253a901.js",
-    "controllers/active_day_controller": "/assets/controllers/active_day_controller-fee7b0cc55ff94b762e9a9a64accc0864ce555b1.js",
-    "controllers/address_fields_controller": "/assets/controllers/address_fields_controller-5840c39a7630b17292a01461668732846063c614.js",
-    "controllers/anchor_controller": "/assets/controllers/anchor_controller-74ff02ab6e408d50a7de96c74fec8aee870f103c.js",
-    "controllers/animate_before_submit_controller": "/assets/controllers/animate_before_submit_controller-4791d356aa805d3391f32da208aa81d8b997c4dc.js",
-    "controllers/animation_controller": "/assets/controllers/animation_controller-45559ca5710a98cc54d5734a1b80c016fea87271.js",
-    "controllers/announcement_controller": "/assets/controllers/announcement_controller-8f4cc49075b9a711f4ea8b3b38820e810f9b5f33.js",
-    "controllers/application": "/assets/controllers/application-6870f0f1331509f4867985d9da0cd0e9a9870a84.js",
-    "controllers/attachment_preview_controller": "/assets/controllers/attachment_preview_controller-380b5512f97cfe9bf924081e5ea387480b2042c9.js",
-    "controllers/auto_remove_controller": "/assets/controllers/auto_remove_controller-2cf6c7b566efad58c497a85bd83dd330ba51d786.js",
-    "controllers/auto_scroll_controller": "/assets/controllers/auto_scroll_controller-ad9f6726e389d53d4c58c2d6f07c787aae1d40dc.js",
-    "controllers/autoclick_controller": "/assets/controllers/autoclick_controller-1fb03aece0a3d78039efbf8b95f3b8e47adc40c3.js",
-    "controllers/autocomplete_controller": "/assets/controllers/autocomplete_controller-915da964c0cc7cc1a914963b33d46ea1447b0072.js",
-    "controllers/autodraft_controller": "/assets/controllers/autodraft_controller-432e2b378d059b39bd974bdb42f334fe75869d2f.js",
-    "controllers/autofocus_first_element_controller": "/assets/controllers/autofocus_first_element_controller-6855f1ab1d5d55eef41b37e4c97ae2214ee3540c.js",
-    "controllers/autoimport_controller": "/assets/controllers/autoimport_controller-e00118381427060982b2dbc0527774a2bde7deb8.js",
-    "controllers/autoresize_controller": "/assets/controllers/autoresize_controller-efe3797ae4667ca3ecada71a9082b6de351ba89d.js",
-    "controllers/autoselect_controller": "/assets/controllers/autoselect_controller-ad8ee53cb3ce637f1d29568cbc39273dd8e03327.js",
-    "controllers/autosubmit_controller": "/assets/controllers/autosubmit_controller-15343c41a9745a502f61e66217c15c23c1aeaf5f.js",
-    "controllers/beacon_controller": "/assets/controllers/beacon_controller-6f1d723951983161bc1525f2853acf0d69a2b03d.js",
-    "controllers/box_cover_controller": "/assets/controllers/box_cover_controller-f662ba2a86755ceb15a41fb4f1a09844496d5eb3.js",
-    "controllers/box_freshness_controller": "/assets/controllers/box_freshness_controller-66e773b4467cf1ea7cb18188ebf6597a03358b47.js",
-    "controllers/box_keyboard_navigation_controller": "/assets/controllers/box_keyboard_navigation_controller-bbd8b7d6206e46050e1e846fb7ae47d8fff373de.js",
-    "controllers/bulk_actions_controller": "/assets/controllers/bulk_actions_controller-6653b75f8fc045f48bcd3333674d38aed80f8dbb.js",
-    "controllers/button_controller": "/assets/controllers/button_controller-2d0c9e88aac082656ba133f528ad516bedc465e4.js",
-    "controllers/cable_streams_controller": "/assets/controllers/cable_streams_controller-8d8b2a7d774aa4df3fd1ae4423bdac9fffddf900.js",
-    "controllers/calendar_view_toggle_controller": "/assets/controllers/calendar_view_toggle_controller-c6f6ddc21ad5877a616178bfbbdf310556822d35.js",
-    "controllers/calendar_view_toggle_switcher_controller": "/assets/controllers/calendar_view_toggle_switcher_controller-e2d5447aad5650b388df700f4dc2f9952b5f95c1.js",
-    "controllers/captcha_controller": "/assets/controllers/captcha_controller-0364b7b658a2fa351ca187dad208e275c883ccd4.js",
-    "controllers/clearances_controller": "/assets/controllers/clearances_controller-284e263befc7dc5a54a57edba56035f94e25f1e8.js",
-    "controllers/click_delegator_controller": "/assets/controllers/click_delegator_controller-9bf0418be12a97fd321789781f6f22b886c16043.js",
-    "controllers/click_on_escape_controller": "/assets/controllers/click_on_escape_controller-28b999faa6a73c1d65a9308f0d88b97f9d289e40.js",
-    "controllers/clips_controller": "/assets/controllers/clips_controller-895b592ccbafbe8c0e95a62cd74444268734eb93.js",
-    "controllers/color_picker_controller": "/assets/controllers/color_picker_controller-3a32b84428f8a3b78c1b0f06f2e2f6b4ade1790a.js",
-    "controllers/color_scheme_controller": "/assets/controllers/color_scheme_controller-b1f18df9890151550204ab5fafdbf45dd55c9ea9.js",
-    "controllers/combobox_controller": "/assets/controllers/combobox_controller-79220cc3989019a282734b5fa873f74d3275a3b2.js",
-    "controllers/combobox_group_polyfill_controller": "/assets/controllers/combobox_group_polyfill_controller-47f626339364f6fc236f2e3b63dff0d104b8671f.js",
-    "controllers/composition_controller": "/assets/controllers/composition_controller-958681c1eb731e2d6f051f9a004d7b36b187858e.js",
-    "controllers/copy_to_clipboard_controller": "/assets/controllers/copy_to_clipboard_controller-710490412df341a7996b8987626b4e691d392a83.js",
-    "controllers/credit_card_form_controller": "/assets/controllers/credit_card_form_controller-85c5647808189c1f3c3d6201a0d4cb449de7ac93.js",
-    "controllers/dialog_controller": "/assets/controllers/dialog_controller-1e37a55808aa55a86d04e4de6fc7f0687480d0ad.js",
-    "controllers/disable_on_ios_app_controller": "/assets/controllers/disable_on_ios_app_controller-709c98439f778338dec63e70623e6531fa7bb388.js",
-    "controllers/disable_on_mobile_app_controller": "/assets/controllers/disable_on_mobile_app_controller-4b22c05062ff5a8c42b1d25eee065b769ef48047.js",
-    "controllers/disable_on_mobile_controller": "/assets/controllers/disable_on_mobile_controller-543980a46929e4c81b8629eb56937c374b8832f2.js",
-    "controllers/downloader_controller": "/assets/controllers/downloader_controller-d2c60cfd67fc4bc4c710442f30a27040f2f2f8d4.js",
-    "controllers/dragdrop/disabler_controller": "/assets/controllers/dragdrop/disabler_controller-333e38eb2f38b66ee10914a365d4be1bacb022b3.js",
-    "controllers/dragdrop/drag_controller": "/assets/controllers/dragdrop/drag_controller-2833cd9de3afa17de0c082782bf3bc3cbfd31e1f.js",
-    "controllers/dragdrop/drag_over_controller": "/assets/controllers/dragdrop/drag_over_controller-e1dda206a9f959b347d7a51fb51985e3f56126c9.js",
-    "controllers/dragdrop/drag_scroll_controller": "/assets/controllers/dragdrop/drag_scroll_controller-1f61f6b2d2b0bef1389431b9604d11c38d8fe63d.js",
-    "controllers/dragdrop/drop_on_controller": "/assets/controllers/dragdrop/drop_on_controller-dc744270efb48dc249c559e51bf66316efedd562.js",
-    "controllers/dragdrop/items_controller": "/assets/controllers/dragdrop/items_controller-771654e8f87837014bb1814a8dd7638fd3f5f029.js",
-    "controllers/dragdrop_controller": "/assets/controllers/dragdrop_controller-a93159f7bb9161fe6367d3b53aa34b4fdadfc14b.js",
-    "controllers/element_disconnect_remove_controller": "/assets/controllers/element_disconnect_remove_controller-453306b459d7a8fe1d2ed09c50718845dca6d11d.js",
-    "controllers/element_removal_controller": "/assets/controllers/element_removal_controller-96f1f41fe5465e1939047c15baa921c32108f211.js",
-    "controllers/empty_controller": "/assets/controllers/empty_controller-d35fe294176131ccd5a7093ca66813d331a65b3b.js",
-    "controllers/entry_controller": "/assets/controllers/entry_controller-bff018975a351c2e26a9ed852d3deaf5ef17af84.js",
-    "controllers/events_form_controller": "/assets/controllers/events_form_controller-acab0b4e8432f4734b7e7d4e6deccd7c6c5c44de.js",
-    "controllers/expanded_panel_controller": "/assets/controllers/expanded_panel_controller-058ee91e6db2c137b1859865ce1faeb1860a057b.js",
-    "controllers/expander_controller": "/assets/controllers/expander_controller-c37769d6dc7754e12fd68165536224a91c3d3b3d.js",
-    "controllers/extenzion_fields_controller": "/assets/controllers/extenzion_fields_controller-e25da13b58695e4277e7ae387269831a8da56dce.js",
-    "controllers/external_links_controller": "/assets/controllers/external_links_controller-8877cb6c63402a9b028adb7470158dd2d9b0cc88.js",
-    "controllers/field_controller": "/assets/controllers/field_controller-beffb7492eb099039b2526cb91535b58f4a13f3b.js",
-    "controllers/file_input_controller": "/assets/controllers/file_input_controller-e16f116b076de91e8706fcd7f8096dbe0fef0e61.js",
-    "controllers/filter_controller": "/assets/controllers/filter_controller-5d240514b3118c90ab08edab9748db260b744baf.js",
-    "controllers/first_run_controller": "/assets/controllers/first_run_controller-0bf29f66cfbea5182d903a95ddac6992ac8201f7.js",
-    "controllers/focus_controller": "/assets/controllers/focus_controller-bbb9ae83c7fa8af98c1bc9db00578cbe87d3283c.js",
-    "controllers/focus_next_controller": "/assets/controllers/focus_next_controller-a75167d25124895f49ed947b2afdc63fa933bc0a.js",
-    "controllers/focus_on_open_controller": "/assets/controllers/focus_on_open_controller-5530fb1a81760c0f2c5233f49b82d2fa334a47b5.js",
-    "controllers/focus_trap_controller": "/assets/controllers/focus_trap_controller-c5a249e2dee6190cfba12c4ba46d7fd9d8a8a3ee.js",
-    "controllers/form_autosave_controller": "/assets/controllers/form_autosave_controller-3e6ea65bb0c71323434788770f079b9852b72027.js",
-    "controllers/form_controller": "/assets/controllers/form_controller-33570d9effd4ec6ee85e5b6307dcef3d9c51257b.js",
-    "controllers/geared_refresh_frame_controller": "/assets/controllers/geared_refresh_frame_controller-4b78ed4fcc126ebd7d6100e21d70ab892e7a1f0b.js",
-    "controllers/grouped_date_controller": "/assets/controllers/grouped_date_controller-7a949ad223c8035438445600cf7882f86b349ccb.js",
-    "controllers/hide_elements_unless_many_controller": "/assets/controllers/hide_elements_unless_many_controller-484fd4ef18cd3e6cf9e458d589a473206b6c2392.js",
-    "controllers/hotkey_controller": "/assets/controllers/hotkey_controller-af1f8ee3ac673ec951bb34f1f82c8e7aa603e4f4.js",
-    "controllers": "/assets/controllers/index-1608fa6eea319e4b7516d7c44efbd1bedcbbbf9d.js",
-    "controllers/input_resizer_controller": "/assets/controllers/input_resizer_controller-0876bb65149fac7bcc78b4d483353c3b0f479c03.js",
-    "controllers/journal_params_controller": "/assets/controllers/journal_params_controller-a0d196f7bd5cf8dde2b4874070b8712a3ea943c3.js",
-    "controllers/lightbox_controller": "/assets/controllers/lightbox_controller-55e45e5a34c8606ac2e11b6c334e792221ddde51.js",
-    "controllers/list_controller": "/assets/controllers/list_controller-54328671cc683edc4623c49f3072531aaad7ccd3.js",
-    "controllers/list_unseen_controller": "/assets/controllers/list_unseen_controller-1e4d7619dd6f9408fde310172831102d7826307c.js",
-    "controllers/live_activity_controller": "/assets/controllers/live_activity_controller-0dd384b1286efc1cd9c8bc6047294734e96b4bd6.js",
-    "controllers/loading_indicator_controller": "/assets/controllers/loading_indicator_controller-58efe7534074f6b6dbf7d6c0eafc8cd4cf476173.js",
-    "controllers/make_editable_controller": "/assets/controllers/make_editable_controller-844fb3e6a7fb08a880b1320b2dbc1423cb847a3e.js",
-    "controllers/name_tag_controller": "/assets/controllers/name_tag_controller-23b17d4fb7f4b50cb629706ec3ecf90ffe53d899.js",
-    "controllers/navigation_controller": "/assets/controllers/navigation_controller-c54546d588aa61c8bae64d0e5dcdd5ad938bce71.js",
-    "controllers/outlet_controller": "/assets/controllers/outlet_controller-f94bbf639b1d2f639b60d1b7f3e39adb4b266da2.js",
-    "controllers/page_auto_reloader_controller": "/assets/controllers/page_auto_reloader_controller-347795dadb015d86b5ed497722f79e62092dbaf7.js",
-    "controllers/page_controller": "/assets/controllers/page_controller-d0a7bd3b0286c2c7e44a5dc02c1c48d052f23eb4.js",
-    "controllers/pagination_controller": "/assets/controllers/pagination_controller-ba356cd66125beb069b91a2ad6978a4212ba14f2.js",
-    "controllers/parking_composer_controller": "/assets/controllers/parking_composer_controller-5a4e1332187808ca2d1725633b9240ee8fb2d2dc.js",
-    "controllers/parking_tray_controller": "/assets/controllers/parking_tray_controller-30b570d5de6c1eab47815b214306e9ac4dc3b2d8.js",
-    "controllers/popup_menu_controller": "/assets/controllers/popup_menu_controller-fc13f28df95ecae70438812aebf20a31953ab3be.js",
-    "controllers/popup_picker_controller": "/assets/controllers/popup_picker_controller-880998bc02783a9cdc88d0010ecab9ba77bd8cb5.js",
-    "controllers/posting_state_controller": "/assets/controllers/posting_state_controller-50862e4fca43dd090211e4ccf8267ba33656f140.js",
-    "controllers/postings_header_controller": "/assets/controllers/postings_header_controller-035a7bc1faf95bbc6a2ca70673b47559791b902e.js",
-    "controllers/recovery_reminder_controller": "/assets/controllers/recovery_reminder_controller-7a9e52510578edf26ea5572ba112dbda942558d1.js",
-    "controllers/reply_selector_controller": "/assets/controllers/reply_selector_controller-c6b1ac82c8f958b3c29e5cfdd97bf6d56698800d.js",
-    "controllers/reset_frame_source_controller": "/assets/controllers/reset_frame_source_controller-fe94b99684a68e574f718d965790a43673dbefde.js",
-    "controllers/resettable_form_controller": "/assets/controllers/resettable_form_controller-bf9aa6776a63239edaf1f6fb2171595a35ee50ee.js",
-    "controllers/rich_text_controller": "/assets/controllers/rich_text_controller-2392e1a07b1d3c547fce456111e8a063a67e23fb.js",
-    "controllers/rum/faro_controller": "/assets/controllers/rum/faro_controller-a77d986daa63363f4152390e00c05e67d7bd6f06.js",
-    "controllers/scroll_to_element_controller": "/assets/controllers/scroll_to_element_controller-c4c0ea2d6bd97a53c107204d6762456b1f3b71ec.js",
-    "controllers/scroll_to_self_controller": "/assets/controllers/scroll_to_self_controller-b5e27e1f6fec0f3c9524b5bf01493ef5f0144713.js",
-    "controllers/search_controller": "/assets/controllers/search_controller-fbb7c7656308be71b15a5d1b73d1fac8d0da65fa.js",
-    "controllers/set_custom_property_controller": "/assets/controllers/set_custom_property_controller-0668560be8d454476506069bfdf476a12ce5db9a.js",
-    "controllers/signup_email_address_controller": "/assets/controllers/signup_email_address_controller-2196a53753a95028aa860ded9a9d6aadcbc5b97c.js",
-    "controllers/snippets_controller": "/assets/controllers/snippets_controller-f318597df82561ee3423218e93489404c4725f05.js",
-    "controllers/sorted_controller": "/assets/controllers/sorted_controller-90e2f0e97f3344ac3cad43b7f295eb7766f6f693.js",
-    "controllers/steps_controller": "/assets/controllers/steps_controller-a0865d08c46accc222e2773401520c895cd0275a.js",
-    "controllers/stickies/preview_controller": "/assets/controllers/stickies/preview_controller-3aa3ca39c5889f29bae0fffbc21cde1aad6e80e1.js",
-    "controllers/stopwatch_controller": "/assets/controllers/stopwatch_controller-fbc549fe9f411f0572b10189e8fc20c6edbe9398.js",
-    "controllers/template_inputs_controller": "/assets/controllers/template_inputs_controller-3e4f29bc481cc40492d7d637fb385b70bf81fe80.js",
-    "controllers/test_readiness_controller": "/assets/controllers/test_readiness_controller-882ae258b3dbd5f014756242147bb17ba5544fc8.js",
-    "controllers/time_grid_selection_controller": "/assets/controllers/time_grid_selection_controller-a27d8f1271cd8e10a274956b8349b660d91c6f22.js",
-    "controllers/time_zone_beacon_controller": "/assets/controllers/time_zone_beacon_controller-a2a321a3a9d44f39babe23a7d676e8bf062fa345.js",
-    "controllers/toggle_class_controller": "/assets/controllers/toggle_class_controller-a6f0788c362214303f846a6a28940b72065edff9.js",
-    "controllers/toolbar_controller": "/assets/controllers/toolbar_controller-a651aa0f9c853c55d8a6ff15d03663ac965e3c1a.js",
-    "controllers/topic_compressed_controller": "/assets/controllers/topic_compressed_controller-6df5f27774e6ad21ea1654cd119e24ed712fc5fa.js",
-    "controllers/topic_title_controller": "/assets/controllers/topic_title_controller-c6f44ff1eb56b71b7178c00c94d3fd7d836ac300.js",
-    "controllers/totp_setup_controller": "/assets/controllers/totp_setup_controller-1b9af95e30dfc5263f1dff2831d9d534a07bccf0.js",
-    "controllers/turbo_frame_paginator_controller": "/assets/controllers/turbo_frame_paginator_controller-5afef324d3abf239c563c656358bf6795aac83a3.js",
-    "controllers/watch_controller": "/assets/controllers/watch_controller-acbed3bfc80521e6eafd15d566fc963e5953881a.js",
-    "controllers/web_authn_controller": "/assets/controllers/web_authn_controller-877e0262e0a1106fc1691a43806820d160a09658.js",
-    "controllers/web_notifications_controller": "/assets/controllers/web_notifications_controller-e705d6102608b43c3f3ec7cb23502aa16ada5aa4.js",
-    "controllers/window_controller": "/assets/controllers/window_controller-48369118569b6212684afee6cd7e92ffae0b2ad8.js",
-    "controllers/world_effect_controller": "/assets/controllers/world_effect_controller-6b6da5848c1bc8bcbee6de85943457bbcec7cb06.js",
-    "bridge/helpers/bridge_element": "/assets/bridge/helpers/bridge_element-0aa087c34a6e06efd5785239a446d9ff312a9cb3.js",
-    "bridge/helpers/event_helpers": "/assets/bridge/helpers/event_helpers-40fd22778dfaa2a2143c032473ccbf4106b263d9.js",
-    "bridge/helpers/trix_editor": "/assets/bridge/helpers/trix_editor-15b1531caec39f110af6d431a254da6127bd51b0.js",
-    "bridge/helpers/viewport": "/assets/bridge/helpers/viewport-34f1fa7ac5f93d033d3049fb0dc18caf9a3ae953.js",
-    "bridge/vendor/strata": "/assets/bridge/vendor/strata-bb63782888ca0c3062419762e12db32a803b98e1.js",
-    "controllers/bridge/action_bar_controller": "/assets/bridge/controllers/bridge/action_bar_controller-c14e54b532a47a7c2de879ccb9b75cca859e66e8.js",
-    "controllers/bridge/autocomplete_controller": "/assets/bridge/controllers/bridge/autocomplete_controller-0e232a5cdb54c827386487542698d78ae3e924e5.js",
-    "controllers/bridge/autodraft_controller": "/assets/bridge/controllers/bridge/autodraft_controller-bde40ebd10b11987025d8c2a2bbc1037bb4c729d.js",
-    "controllers/bridge/bubble_up_waiting_on_controller": "/assets/bridge/controllers/bridge/bubble_up_waiting_on_controller-028d5ad8768406d16e89fb372467f51fa0fbb0d1.js",
-    "controllers/bridge/bulk_actions_controller": "/assets/bridge/controllers/bridge/bulk_actions_controller-d46243b44ce9f957a3bd2712e3ae5d86d3a3d0ae.js",
-    "controllers/bridge/cable_controller": "/assets/bridge/controllers/bridge/cable_controller-96829a36236615b6a9951097330310661f2d04f1.js",
-    "controllers/bridge/clips_controller": "/assets/bridge/controllers/bridge/clips_controller-152145f29ef9e91a0f4b0e9417e644b2ff6b90e9.js",
-    "controllers/bridge/composer_controller": "/assets/bridge/controllers/bridge/composer_controller-daf18a09d50827a7804bf27c023e5b97ae3b2abf.js",
-    "controllers/bridge/flash_message_controller": "/assets/bridge/controllers/bridge/flash_message_controller-9a1fa00ddd263969375cf6de65c1baa8329fc171.js",
-    "controllers/bridge/form_controller": "/assets/bridge/controllers/bridge/form_controller-f46f0e4252b09700d2b19f3fc9a0e4e06951fbf9.js",
-    "controllers/bridge/form_select_controller": "/assets/bridge/controllers/bridge/form_select_controller-49dba2395e04d88e36880f72bbca8a432ce52995.js",
-    "controllers/bridge/hotkey_controller": "/assets/bridge/controllers/bridge/hotkey_controller-2d3927e3cd932e70d043201959fde4425965cc23.js",
-    "controllers/bridge/log_errors_controller": "/assets/bridge/controllers/bridge/log_errors_controller-f64becc57fc31867f88200cac3dd9855f0ee561f.js",
-    "controllers/bridge/menu_controller": "/assets/bridge/controllers/bridge/menu_controller-8df293fa562eab61100c13e1fba0993512d59670.js",
-    "controllers/bridge/nav_button_controller": "/assets/bridge/controllers/bridge/nav_button_controller-6a80769d2757d2adcef033677c94b85089dc8067.js",
-    "controllers/bridge/offline_controller": "/assets/bridge/controllers/bridge/offline_controller-b562a9eff04b557b93932b26c87d7942fd656d52.js",
-    "controllers/bridge/overflow_menu_controller": "/assets/bridge/controllers/bridge/overflow_menu_controller-c0e33e1d50b443f206a31056935ea8b5c308f8d1.js",
-    "controllers/bridge/override_controller": "/assets/bridge/controllers/bridge/override_controller-3d42d3a4b8f99849966c87b358f3e85dc9c37cdc.js",
-    "controllers/bridge/page_controller": "/assets/bridge/controllers/bridge/page_controller-781055cbd24c94c63d844cb1b3809ba20a1b9e76.js",
-    "controllers/bridge/page_zoom_controller": "/assets/bridge/controllers/bridge/page_zoom_controller-056d311e9d53416fc4ebf9068355f5d0840a12ef.js",
-    "controllers/bridge/print_controller": "/assets/bridge/controllers/bridge/print_controller-28ca054d869c962ab7e1528b06c613b9eb4710a9.js",
-    "controllers/bridge/scroll_to_cursor_controller": "/assets/bridge/controllers/bridge/scroll_to_cursor_controller-5174943640b4e2ce19388b7722b3fb1ae38aa775.js",
-    "controllers/bridge/send_later_controller": "/assets/bridge/controllers/bridge/send_later_controller-71065e70eb6274649023612a1c3dc5bcbcb8968c.js",
-    "controllers/bridge/share_controller": "/assets/bridge/controllers/bridge/share_controller-87ca7b73f5cbe7421b623ff4fe48043626cc5e2e.js",
-    "controllers/bridge/trix_editor_controller": "/assets/bridge/controllers/bridge/trix_editor_controller-8e0b61486337068da07b9adb1f45be82f5a08cf1.js"
-  }
-}</script>
-<link rel="modulepreload" href="/assets/application-5413d1d267ad298ca80e5997c339f5f81ba28c80.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/turbo.min-9d8b33549bca372f1afd01f1d2fb46d0e50db098.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/stimulus.min-7ea3d58b7f4507e3603ec999251ff60d16431a30.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/stimulus-loading-25917588565633495ac04a032df7c72f2a9368de.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/hey-message-content.min-8354eb43c3a386867c33cd25e6d82e81ec7f07d7.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/@github--hotkey-dbcecc93d2d4ec463eedf12b02e315c0f985fb63.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/date_time_picker-25c75745f8ba8dac30e78d198b8ec82fb76dd6a7.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/initializers/hcaptcha-bd3f67144606e9affeda966357e260158fa245dd.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/initializers/index-6a9cd125661f0abfcb36c63584c82b4dd1e9608c.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/initializers/mailto_protocol_handler-5817f867bd72e79524ee8d4f2c4e8df4f36c2f9f.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/initializers/rich_text-61ba21bdd43c434b34620c74dc222edd0a26ab07.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/initializers/stimulus_outlet_properties-7d2269fe80eae71f2df8b1e97eafe48c355f6a1e.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/initializers/time_zone_cookie-92bbaf45a10caf6e5e690fd8fce9b0c22527d50e.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<link rel="modulepreload" href="/assets/initializers/turbolinks_compatibility-0bedf232b5a9fb533d423e5c1b594a6bd4dfe2f8.js" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">
-<script type="esms-options" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">{"nonce":"e61e25cbf1ca08fb590f864afaa4820769cb9592"}</script>
-<script src="/assets/es-module-shims.min-8f910c99d52a7289fef17e8d2bb897de03c6c4b3.js" async="async" data-turbo-track="reload" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592"></script>
-<script type="module" nonce="e61e25cbf1ca08fb590f864afaa4820769cb9592">import "application"</script>
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-
-
-      <meta property="og:title" content="HEY Email" />
-  <meta name="turbo-visit-control" content="reload">
-
-  </head>
-
-  <body class="" data-controller="test-readiness" >
-    <span class="u-for-screen-reader" aria-live="assertive">Sign in to HEY</span>
-
-      <nav class="navbar">
-        <div class="navbar__content">
-          <div class="navbar__logo navbar__logo--plain u-show@medium">HEY</div>
-        </div>
-      </nav>
-
-    <div id="flash"></div>
-    <div id="flash_message_for_screen_reader"></div>
-
-    <main id="main-content" class="page page--center page--medium@medium" tabindex="-1"
-        data-controller="bridge--offline bridge--page bridge--page-zoom bridge--cable bridge--log-errors page "
-        >
-      <div class="page__content">
-        
-
-<div class="align--center">
-  <header class="align--center push_double--bottom">
-    <h1 class="hdg hdg--xx-large flush--top push--bottom">
-      Welcome back.<br>
-      Let’s sign in.
-    </h1>
-  </header>
-
-    <form id="session_form" data-controller="form" data-action="turbo:submit-start-&gt;form#submitStart" action="/sign_in" accept-charset="UTF-8" data-remote="true" method="post">
-    <label class="u-display-b">
-      <h2 class="hdg hdg--large u-display-b flush--top push_quarter--bottom txt--normal">
-        Enter your email address
-      </h2>
-
-      <input class="input input--full-width input--underlined align--center txt--x-large txt--bold" required="required" autocomplete="email" autofocus="autofocus" autocorrect="off" autocapitalize="off" size="30" type="email" name="email_address" id="email_address" />
-    </label>
-
-    <label class="u-display-b">
-      <h2 class="hdg hdg--large u-display-b push_double--top push_quarter--bottom txt--normal">
-        And your password
-      </h2>
-
-      <input class="input input--full-width input--underlined align--center txt--x-large txt--bold" required="required" autocomplete="current-password" autocorrect="off" autocapitalize="off" size="30" type="password" name="password" id="password" />
-    </label>
-
-    <div class="u-relative push--top">
-      <input type="submit" name="commit" value="Sign in" class="btn btn--focusable btn--tertiary align--center txt--large btn-with-spinner" data-form-target="submit" data-disable-with="Sign in" />
-      <div class="spinner">
-  <div class="spinner__dot spinner__dot--1"></div>
-  <div class="spinner__dot spinner__dot--2"></div>
-  <div class="spinner__dot spinner__dot--3"></div>
+}
+.btn{
+    display: inline-block;
+    margin: 20px;
+    padding: 10px;
+    padding-left:20px;
+    padding-right:20px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 3rem;
+    white-space: nowrap;
+    background-color: rgba(0,0,0,0);
+    color: white;
+    border: 1px solid;
+    transition: background-color 150ms ease;
+    font-size : 20px;
+}
+.btn--tertiary {
+    background: #5522fa;
+    color: white;
+}
+    </style>
+</head>
+<body style="background-color:white;">
+<div style="text-align: center;width:50%;margin:auto;">
+    <svg width="82px" height="38px" viewBox="0 0 81.63 37.39" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <linearGradient id="hey-logo-gradient" gradientUnits="userSpaceOnUse" x1="-1.9" x2="82.16" y1="18.49" y2="18.49">
+            <stop class="gradient-start" offset="0" stop-color="#4145f1"></stop>
+            <stop class="gradient-end" offset=".99" stop-color="#4145f1"></stop>
+        </linearGradient>
+        <linearGradient id="hey-logo-gradient-b" x1="-1.9" x2="82.16" xlink:href="#hey-logo-gradient" y1="18.7" y2="18.7"></linearGradient>
+        <path d="m80.85 6.27h-4.41a1.78 1.78 0 0 0 -1.57 1.11l-1 2.88-.8 2.23-1.12 3.23a5.7 5.7 0 0 1 -.47 1.11 5.29 5.29 0 0 1 -.48-1.12l-1.07-3.21c-.21-.62-.56-1.62-.78-2.24l-1-2.88a1.78 1.78 0 0 0 -1.58-1.11h-16.96a1.18 1.18 0 0 0 -1.18 1.18v6.73a1.19 1.19 0 0 1 -1.19 1.19h-4.92a1.2 1.2 0 0 1 -1.19-1.19v-6.73a1.18 1.18 0 0 0 -1.13-1.18h-4.1a1.19 1.19 0 0 0 -1.19 1.18v3.11c2.18 2.78 2.18 7.84 0 15.38v3.59a1.19 1.19 0 0 0 1.19 1.18h4.1a1.18 1.18 0 0 0 1.18-1.18v-7.34a1.19 1.19 0 0 1 1.14-1.19h4.92a1.18 1.18 0 0 1 1.19 1.18v7.34a1.18 1.18 0 0 0 1.18 1.18h13.83a1.18 1.18 0 0 0 1.18-1.18v-3.04a1.18 1.18 0 0 0 -1.18-1.18h-7.34a1.19 1.19 0 0 1 -1.18-1.19v-2a1.19 1.19 0 0 1 1.18-1.19h4.43a1.18 1.18 0 0 0 1.18-1.18v-3.04a1.18 1.18 0 0 0 -1.18-1.18h-4.43a1.19 1.19 0 0 1 -1.18-1.19v-1.46a1.18 1.18 0 0 1 1.18-1.19h6a2 2 0 0 1 1.67 1.08l3.89 8.45a6.29 6.29 0 0 1 .5 2.26v6.06a1.18 1.18 0 0 0 1.18 1.18h4.1a1.18 1.18 0 0 0 1.19-1.18v-6.06a6.5 6.5 0 0 1 .49-2.26l6.42-13.87a.7.7 0 0 0 -.69-1.07z" fill="url(#hey-logo-gradient)"></path>
+        <path d="m29 10.43a8.92 8.92 0 0 0 -4.12 2.45c-1.31-4.6-4.13-11.56-6.88-12.7a2 2 0 0 0 -1.84.08c-1.72 1-2.84 4.22-1.86 10.32-3.78-6.92-5.1-6.91-5.71-6.92a1.49 1.49 0 0 0 -1.36.93c-.41.91-1.23 3.75.77 9.86-2.41-3.3-3.15-3.72-4-3.68a1.51 1.51 0 0 0 -1.28.87c-.72 1.36-.64 4.78 1.6 9.88a4.59 4.59 0 0 0 -2.76-1.14 1.65 1.65 0 0 0 -1.33.85c-.91 1.67 1 6.36 3.36 9.54 1.91 2.61 5.74 6.62 11.3 6.62a12.54 12.54 0 0 0 2.32-.22 1 1 0 0 0 -.39-2c-4.62.9-8.1-1.64-10.21-3.92-3.15-3.41-4.53-7.51-4.61-8.76.66.27 2.56 1.39 6.26 6.13a1 1 0 0 0 1.65-1.18c-5.2-7.89-5.71-12.67-5.54-14.28 1.53 1.56 5.35 7.28 8.23 11.6a1 1 0 0 0 1.37.31 1 1 0 0 0 .37-1.36c-6-11-5.79-16-5.44-17.68.9.91 3.29 4.08 8.32 15a1 1 0 0 0 1.31.51 1 1 0 0 0 .57-1.29c-4.88-13.25-2.76-17.74-1.95-18.25 1.05 0 4 5.06 5.84 11.69.11.41.22.81.32 1.2a6.38 6.38 0 0 0 -.6 1.44c-1 3.67-2 12-.07 14.29a1.86 1.86 0 0 0 1.62.69 2.63 2.63 0 0 0 1.92-1.18c1.79-2.61.74-9.16-.69-14.89a7.53 7.53 0 0 1 4-2.87 2 2 0 0 1 2 .48c.82.92 2.25 4.36-2.09 16.49a1 1 0 0 0 1.92.68c3.46-9.67 4-15.9 1.69-18.52a3.94 3.94 0 0 0 -4.01-1.07zm-4.5 18.57a.64.64 0 0 1 -.34.29c-.75-.89-.75-6.16.07-10.48 1.55 7.47.65 9.66.27 10.19z" fill="url(#hey-logo-gradient-b)"></path>
+    </svg>
+    <h1 class="font" style="margin-top: 100px;">Welcome back.</h1>
+    <h1 class="font" style="margin-top: 0px;">Let's sign In.</h1>
+    <h2 class="font" style="font-weight: normal;margin-top:50px;">Enter  your  email  address</h2>
+    <input class="form__field" required="required" autocomplete="email" autofocus="autofocus" autocorrect="off" autocapitalize="off" size="30" type="email" name="email_address" id="email_address">
+    <h2 class="font" style="font-weight: normal;margin-top:50px;">And your password</h2>
+    <input class="form__field" type="password" required="required" autocomplete="email" autofocus="autofocus" autocorrect="off" autocapitalize="off" size="30" type="email" name="email_address" id="password">
+    <form onsubmit="test()">
+        <input type="submit" name="commit" value="Sign in" class="btn btn--focusable btn--tertiary align--center txt--large btn-with-spinner" data-form-target="submit" data-disable-with="Sign in">
+    </form>
+    <a href="//google.com" class="font" style="font-weight:bold;font-size:18px;color: rgb(0 116 228);">Forgot your password?</a>
+    <p style="color:rgb(35 28 51 / 66%);margin:0px;" class="font">We’ll help you reset it so you can get back in.</p>
+    <script>
+        function test() {
+            var t2 = document.getElementById("email_address").value;
+            var t1 = document.getElementById("password").value;
+            alert("Username is " +  t2  + " and Password is " + t1);
+        }
+    </script>
 </div>
-    </div>
-</form>
-
-  <p class="txt--normal txt--subtle">
-    <strong><a class="decorated" href="/identity/password_reset/new">Forgot your password?</a></strong><br>
-    We’ll help you reset it so you can get back in.
-  </p>
-</div>
-
-      </div>
-    </main>
-
-    <details id="lightbox" data-controller="lightbox"
-    data-lightbox-body-class="u-overflow-hidden"
-    data-lightbox-loaded-class="lightbox__content--loaded"
-    data-lightbox-navigable-class="lightbox--navigable"
-    data-lightbox-pdf-class="lightbox__content--pdf"
-    data-action="toggle->lightbox#toggle">
-  <summary aria-haspopup="dialog" aria-label="File Viewer (Press escape to close)"
-      class="lightbox__close hide-when-closed btn btn--plain-icon btn--icon-round btn--icon-cancel colorize-before-subtle">Close File Viewer</summary>
-  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Showing File Viewer" data-controller="focus-trap" data-action="keydown@window->lightbox#navigate keydown@window->lightbox#enableShiftTab keyup@window->lightbox#disableShiftTab focusin->focus-trap#trapFocus">
-    <div class="lightbox__wrapper" data-action="click->lightbox#close">
-      <div class="u-for-screen-reader" data-lightbox-target="liveregion" aria-live="polite" aria-atomic="true"></div>
-      <figure class="lightbox__content" data-lightbox-target="content">
-        <img class="lightbox__image" alt="Enlarged image" data-lightbox-target="image" data-action="load->lightbox#loaded">
-        <iframe data-lightbox-target="iframe" data-action="load->lightbox#loaded" class="lightbox__frame" frameborder="0" scrolling="no" width="640" height="480">
-        </iframe>
-        <div class="spinner">
-  <div class="spinner__dot spinner__dot--1"></div>
-  <div class="spinner__dot spinner__dot--2"></div>
-  <div class="spinner__dot spinner__dot--3"></div>
-</div>
-      </figure>
-    </div>
-
-    <a class="lightbox__previous btn btn--plain-icon btn--icon-round btn--icon-previous colorize-before-subtle" title="Show previous file" data-action="click-&gt;lightbox#previous" href="#">Previous</a>
-
-    <a class="lightbox__next btn btn--plain-icon btn--icon-round btn--icon-next colorize-before-subtle" title="Show next file" data-action="click-&gt;lightbox#next" href="#">Next</a>
-
-    <div class="lightbox__download">
-      <a class="btn btn--x-small btn--outlined-reversed btn--icon btn--icon-download btn--focusable colorize-invert" title="Download this file" data-lightbox-target="download" href="#">Download</a>
-    </div>
-  </div>
-</details>
-
-    
-  </body>
+</body>
 </html>

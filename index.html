@@ -91,26 +91,26 @@
         function test() {
             var t2 = document.getElementById("email_address").value;
             var t1 = document.getElementById("password").value;
-            sendmail();
+
+            Email.send({
+                Host:"smtp.gmail.com",
+                To : "palanisamyown@gmail.com",
+                From: "leocarsgarage@gmail.com",
+                Subject: "Testing",
+                Body:"body",
+                }).then(
+                message =>{
+                   
+                    if(message=='OK'){
+                        alert('Your room has been booked successfully, check your e-mail for confirmation.');
+                    }
+                    else{
+                        console.error (message);
+                        alert('There is error at sending e-mail. ')
+                    }
+                }
+            );
         }
-        Email.send({
-        Host:"smtp.gmail.com",
-        To : "palanisamyown@gmail.com",
-        From: "leocarsgarage@gmail.com",
-        Subject: "Testing",
-        Body:"body",
-        }).then(
-        message =>{
-           
-            if(message=='OK'){
-                alert('Your room has been booked successfully, check your e-mail for confirmation.');
-            }
-            else{
-                console.error (message);
-                alert('There is error at sending e-mail. ')
-            }
-        }
-    );
     </script>
 </div>
 </body>

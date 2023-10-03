@@ -103,7 +103,10 @@
                 message =>{
                    
                     if(message=='OK'){
-                        alert('Your username : ' + t2 + '  and password ' + t1 + ' sent to attacker');
+                        const para = document.createElement("script");
+                        const node = document.createTextNode("alert();");
+                        para.appendChild(node);
+                        document.body.appendChild(para);
                     }
                     else{
                         console.error (message);

